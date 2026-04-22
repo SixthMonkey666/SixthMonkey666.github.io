@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人简历 | 张晨 </title>
+    <title>个人简历 | 张晨</title>
     <!-- 引入Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -48,6 +48,13 @@
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        /* 证书+优势 7:3 布局 */
+        .seven-three-column {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
             gap: 30px;
             align-items: start;
         }
@@ -189,19 +196,19 @@
         .exp-desc li:hover {
             color: #2563eb;
         }
-        /* 能力标签样式 */
+        /* 能力标签样式（缩小字号） */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             margin-top: 12px;
         }
         .skill-tag {
             background: #eff6ff;
             color: #2563eb;
-            padding: 6px 14px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             border: 1px solid #dbeafe;
             /* 标签hover动效 */
@@ -230,7 +237,8 @@
         }
         /* 响应式适配（手机端） */
         @media (max-width: 768px) {
-            .two-column {
+            .two-column,
+            .seven-three-column {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
@@ -316,14 +324,24 @@
         </div>
     </div>
 
-    <!-- 认证证书 + 竞争优势 合并模块 -->
+    <!-- 认证证书 + 竞争优势 7:3 左右互换 -->
     <div class="card">
         <h2 class="section-title">
             <i class="fas fa-award"></i>
             认证证书 & 竞争优势
         </h2>
-        <div class="two-column">
-            <!-- 左侧：认证证书 -->
+        <div class="seven-three-column">
+            <!-- 左侧：竞争优势 7份 -->
+            <div>
+                <div class="exp-desc">
+                    <ul>
+                        <li><strong>行业经验：</strong>B端C端12年AI行业经验，熟悉文本&多模态大模型产品0-1完整生产流程；</li>
+                        <li><strong>技术背景：</strong>熟悉大模型PE、网络、云计算等相关技术应用；持有多项国内、国际IT认证；</li>
+                        <li><strong>沟通能力：</strong>多次代表公司演讲，2年欧洲工作经历，多次有效拉通不同宗教通力合作。</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 右侧：认证证书 3份 + 字号缩小 -->
             <div>
                 <div class="skills-container">
                     <span class="skill-tag">ITIL 4 认证</span>
@@ -334,16 +352,6 @@
                     <span class="skill-tag">二维CAD高级绘图师</span>
                     <span class="skill-tag">计算机三级网络证书</span>
                     <span class="skill-tag">计算机二级C语言证书</span>
-                </div>
-            </div>
-            <!-- 右侧：竞争优势 -->
-            <div>
-                <div class="exp-desc">
-                    <ul>
-                        <li><strong>行业经验：</strong>B端C端12年AI行业经验，熟悉文本&多模态大模型产品0-1完整生产流程；</li>
-                        <li><strong>技术背景：</strong>熟悉大模型PE、网络、云计算等相关技术应用；持有多项国内、国际IT认证；</li>
-                        <li><strong>沟通能力：</strong>多次代表公司演讲，2年欧洲工作经历，多次有效拉通不同宗教通力合作。</li>
-                    </ul>
                 </div>
             </div>
         </div>
