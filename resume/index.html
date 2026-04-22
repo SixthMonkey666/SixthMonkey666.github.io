@@ -17,10 +17,17 @@
         body {
             background: #f8f9fa;
             padding: 20px;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             color: #333;
             line-height: 1.7;
+            /* 页面加载过渡 */
+            opacity: 0;
+            animation: pageFadeIn 0.8s ease-in-out forwards;
+        }
+        /* 页面加载动效 */
+        @keyframes pageFadeIn {
+            to { opacity: 1; }
         }
         /* 卡片样式（商务风） */
         .card {
@@ -30,16 +37,26 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             margin-bottom: 24px;
             border: 1px solid #f0f2f5;
+            /* 卡片hover动效 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        /* 双列布局样式 */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
         }
         /* 头部信息布局 */
         .header {
             display: flex;
             align-items: center;
             gap: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f0f2f5;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
         .photo {
             width: 120px;
@@ -47,6 +64,11 @@
             object-fit: cover;
             border-radius: 8px;
             border: 4px solid #f0f2f5;
+            /* 照片hover动效 */
+            transition: transform 0.3s ease;
+        }
+        .photo:hover {
+            transform: scale(1.05);
         }
         .name-info h1 {
             font-size: 32px;
@@ -72,6 +94,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            /* 联系方式hover动效 */
+            transition: color 0.2s ease;
+        }
+        .contact-item:hover {
+            color: #2563eb;
         }
         .contact-item i {
             color: #2563eb;
@@ -83,13 +110,28 @@
             font-size: 20px;
             font-weight: 600;
             color: #1f2937;
-            margin: 28px 0 16px;
+            margin: 0 0 20px 0;
             display: flex;
             align-items: center;
             gap: 10px;
             padding-bottom: 8px;
             border-bottom: 2px solid #2563eb;
             width: fit-content;
+            /* 标题下划线动效 */
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.5s ease;
+        }
+        .card:hover .section-title::after {
+            width: 100%;
         }
         .section-title i {
             color: #2563eb;
@@ -101,6 +143,12 @@
             padding-left: 12px;
             border-left: 3px solid #e5e7eb;
             padding-bottom: 10px;
+            /* 经历项hover动效 */
+            transition: border-color 0.3s ease, padding-left 0.3s ease;
+        }
+        .experience-item:hover {
+            border-color: #2563eb;
+            padding-left: 18px;
         }
         .experience-item:last-child {
             margin-bottom: 0;
@@ -135,6 +183,11 @@
         }
         .exp-desc li {
             margin-bottom: 6px;
+            /* 列表项hover动效 */
+            transition: color 0.2s ease;
+        }
+        .exp-desc li:hover {
+            color: #2563eb;
         }
         /* 能力标签样式 */
         .skills-container {
@@ -151,9 +204,36 @@
             font-size: 14px;
             font-weight: 500;
             border: 1px solid #dbeafe;
+            /* 标签hover动效 */
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .skill-tag:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+        /* 教育背景项样式 */
+        .edu-item {
+            margin-bottom: 16px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        .edu-item:hover {
+            background: #eff6ff;
+        }
+        .edu-item:last-child {
+            margin-bottom: 0;
         }
         /* 响应式适配（手机端） */
         @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
             .header {
                 flex-direction: column;
                 gap: 20px;
@@ -187,84 +267,89 @@
         }
     </script>
 
-    <!-- 简历主体内容 -->
+    <!-- 个人信息 + 教育背景 合并模块 -->
     <div class="card">
-        <!-- 头部信息（照片+姓名+联系方式） -->
-        <div class="header">
-            <img src="photo.jpg" class="photo" alt="个人证件照">
-            <div class="name-info">
-                <h1>张晨</h1>
-                <div class="job-title">AI行业专家 | 商业化大模型与数据策略运营</div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>17326898995</span>
+        <h2 class="section-title">
+            <i class="fas fa-user"></i>
+            个人信息 & 教育背景
+        </h2>
+        <div class="two-column">
+            <!-- 左侧：个人基本信息 -->
+            <div>
+                <div class="header">
+                    <img src="photo.jpg" class="photo" alt="个人证件照">
+                    <div class="name-info">
+                        <h1>张晨</h1>
+                        <div class="job-title">AI行业专家 | 商业化大模型与数据策略运营</div>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>17326898995</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>624541214@qq.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-birthday-cake"></i>
+                                <span>1992.08.04</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>624541214@qq.com</span>
+                </div>
+            </div>
+            <!-- 右侧：教育背景 -->
+            <div>
+                <div class="edu-item">
+                    <div class="exp-title">华北电力大学</div>
+                    <div class="exp-time">
+                        <i class="far fa-calendar-alt"></i>
+                        2023.09 - 2026.06
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-birthday-cake"></i>
-                        <span>1992.08.04</span>
+                    <div class="exp-desc">工商管理（硕士研究生）</div>
+                </div>
+                <div class="edu-item">
+                    <div class="exp-title">沈阳工业大学</div>
+                    <div class="exp-time">
+                        <i class="far fa-calendar-alt"></i>
+                        2011.09 - 2015.06
                     </div>
+                    <div class="exp-desc">自动化专业（本科学士学位）</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 教育背景 -->
+    <!-- 认证证书 + 竞争优势 合并模块 -->
     <div class="card">
         <h2 class="section-title">
-            <i class="fas fa-graduation-cap"></i>
-            教育背景
+            <i class="fas fa-award"></i>
+            认证证书 & 竞争优势
         </h2>
-        <div class="experience-item">
-            <div class="exp-title">华北电力大学 - 工商管理（硕士研究生）</div>
-            <div class="exp-time">
-                <i class="far fa-calendar-alt"></i>
-                2023.09 - 2026.06
+        <div class="two-column">
+            <!-- 左侧：认证证书 -->
+            <div>
+                <div class="skills-container">
+                    <span class="skill-tag">ITIL 4 认证</span>
+                    <span class="skill-tag">TOGAF企业架构师</span>
+                    <span class="skill-tag">阿里云云计算ACP</span>
+                    <span class="skill-tag">阿里云Clouder开发者</span>
+                    <span class="skill-tag">职业汉语高级证书</span>
+                    <span class="skill-tag">二维CAD高级绘图师</span>
+                    <span class="skill-tag">计算机三级网络证书</span>
+                    <span class="skill-tag">计算机二级C语言证书</span>
+                </div>
             </div>
-        </div>
-        <div class="experience-item">
-            <div class="exp-title">沈阳工业大学 - 自动化专业（本科学士学位）</div>
-            <div class="exp-time">
-                <i class="far fa-calendar-alt"></i>
-                2011.09 - 2015.06
+            <!-- 右侧：竞争优势 -->
+            <div>
+                <div class="exp-desc">
+                    <ul>
+                        <li><strong>行业经验：</strong>B端C端12年AI行业经验，熟悉文本&多模态大模型产品0-1完整生产流程；</li>
+                        <li><strong>技术背景：</strong>熟悉大模型PE、网络、云计算等相关技术应用；持有多项国内、国际IT认证；</li>
+                        <li><strong>沟通能力：</strong>多次代表公司演讲，2年欧洲工作经历，多次有效拉通不同宗教通力合作。</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <!-- 认证证书 -->
-    <div class="card">
-        <h2 class="section-title">
-            <i class="fas fa-certificate"></i>
-            认证证书
-        </h2>
-        <div class="skills-container">
-            <span class="skill-tag">ITIL 4 认证</span>
-            <span class="skill-tag">TOGAF企业架构师</span>
-            <span class="skill-tag">阿里云云计算ACP</span>
-            <span class="skill-tag">阿里云Clouder开发者</span>
-            <span class="skill-tag">职业汉语高级证书</span>
-            <span class="skill-tag">二维CAD高级绘图师</span>
-            <span class="skill-tag">计算机三级网络证书</span>
-            <span class="skill-tag">计算机二级C语言证书</span>
-        </div>
-    </div>
-
-    <!-- 竞争优势 -->
-    <div class="card">
-        <h2 class="section-title">
-            <i class="fas fa-star"></i>
-            竞争优势
-        </h2>
-        <div class="exp-desc">
-            <ul>
-                <li><strong>行业经验：</strong>B端C端12年AI行业经验，熟悉文本&多模态大模型产品0-1完整生产流程；</li>
-                <li><strong>技术背景：</strong>熟悉大模型PE、网络、云计算等相关技术应用；持有多项国内、国际IT认证；</li>
-                <li><strong>沟通能力：</strong>多次代表公司演讲，2年欧洲工作经历，多次有效拉通不同宗教通力合作。</li>
-            </ul>
         </div>
     </div>
 
