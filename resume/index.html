@@ -144,7 +144,7 @@
             color: #2563eb;
             font-size: 18px;
         }
-        /* 经历/项目样式 */
+        /* 经历/项目样式 - 核心修改：标题和时间同行 */
         .experience-item {
             margin-bottom: 20px;
             padding-left: 12px;
@@ -161,19 +161,26 @@
             margin-bottom: 0;
             padding-bottom: 0;
         }
+        /* 新增：标题+时间容器，实现同行排列 */
+        .title-time-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
         .exp-title {
             font-size: 17px;
             font-weight: 600;
             color: #1f2937;
-            margin-bottom: 4px;
+            /* 移除原有的margin-bottom，改为在容器中控制间距 */
         }
         .exp-time {
             font-size: 14px;
             color: #6b7280;
-            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 6px;
+            /* 移除原有的margin-bottom，改为在容器中控制间距 */
         }
         .exp-time i {
             font-size: 12px;
@@ -255,6 +262,12 @@
             }
             .name-info h1 {
                 font-size: 26px;
+            }
+            /* 移动端标题+时间换行显示，保证可读性 */
+            .title-time-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
             }
         }
     </style>
@@ -364,10 +377,13 @@
             工作经历
         </h2>
         <div class="experience-item">
-            <div class="exp-title">字节跳动 AI data | 商业化大模型与数据策略运营</div>
-            <div class="exp-time">
-                <i class="far fa-calendar-alt"></i>
-                2023.09 - 至今
+            <!-- 新增：标题+时间容器 -->
+            <div class="title-time-wrapper">
+                <div class="exp-title">字节跳动 AI data | 商业化大模型与数据策略运营</div>
+                <div class="exp-time">
+                    <i class="far fa-calendar-alt"></i>
+                    2023.09 - 至今
+                </div>
             </div>
             <div class="exp-desc">
                 <ul>
@@ -386,10 +402,13 @@
         </div>
 
         <div class="experience-item">
-            <div class="exp-title">北京算能科技有限公司 | 产品解决方案架构师</div>
-            <div class="exp-time">
-                <i class="far fa-calendar-alt"></i>
-                2022.08 - 2023.08
+            <!-- 新增：标题+时间容器 -->
+            <div class="title-time-wrapper">
+                <div class="exp-title">北京算能科技有限公司 | 产品解决方案架构师</div>
+                <div class="exp-time">
+                    <i class="far fa-calendar-alt"></i>
+                    2022.08 - 2023.08
+                </div>
             </div>
             <div class="exp-desc">
                 <ul>
@@ -406,10 +425,13 @@
         </div>
 
         <div class="experience-item">
-            <div class="exp-title">北京旷视科技有限公司 | 工业能源行业解决方案架构师</div>
-            <div class="exp-time">
-                <i class="far fa-calendar-alt"></i>
-                2020.08 - 2022.08
+            <!-- 新增：标题+时间容器 -->
+            <div class="title-time-wrapper">
+                <div class="exp-title">北京旷视科技有限公司 | 工业能源行业解决方案架构师</div>
+                <div class="exp-time">
+                    <i class="far fa-calendar-alt"></i>
+                    2020.08 - 2022.08
+                </div>
             </div>
             <div class="exp-desc">
                 <ul>
@@ -426,10 +448,13 @@
         </div>
 
         <div class="experience-item">
-            <div class="exp-title">海康威视 | 项目经理/技术组长（海外欧洲/国内沈阳）</div>
-            <div class="exp-time">
-                <i class="far fa-calendar-alt"></i>
-                2015.03 - 2020.07
+            <!-- 新增：标题+时间容器 -->
+            <div class="title-time-wrapper">
+                <div class="exp-title">海康威视 | 项目经理/技术组长（海外欧洲/国内沈阳）</div>
+                <div class="exp-time">
+                    <i class="far fa-calendar-alt"></i>
+                    2015.03 - 2020.07
+                </div>
             </div>
             <div class="exp-desc">
                 <ul>
@@ -441,6 +466,214 @@
                     <li>2019年度，支持区域完成销售额21M美元，业绩达成率103%；</li>
                     <li>2016和2017年，连续两次赢得年度最佳团队，总计支持8000W销售任务；</li>
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增：项目经验模块 -->
+    <div class="card">
+        <h2 class="section-title">
+            <i class="fas fa-project-diagram"></i>
+            项目经验
+        </h2>
+        <!-- 大模型相关项目 -->
+        <div class="experience-item">
+            <!-- 新增：标题+时间容器（主标题无时间，保持原有样式） -->
+            <div class="exp-title">大模型相关项目</div>
+            <div class="exp-desc">
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">BTD商业化AI漫剧项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2024.03-2024.06
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：支持AI漫剧Agent数据项目，包含资产生成、风格收集、剪辑等方向；</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">BTD商业化视频剪辑、Caption项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2024.03-2024.06
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：支持商业化基础能力模型，包含DPO、Caption、SBS评测等方向；</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">BTD懂车帝AI搜索SFT项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2024.03-2024.06
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：根据query对召回排序，再根据排序筛选对大模型的回复进行改写；</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">BTD懂车帝U-DC ReAct项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2024.01-2024.04
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：文本对话大模型，在销售场景，针对回复、工具调用进行打分和问题分类；</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">NCEPU安徽电网电力交易场景大模型应用项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2024.01-2024.06
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：为安徽电网电力交易中客服、辅助决策、电价预测等场景设计大模型应用方案；</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <strong style="color: #1f2937; font-size: 15px;">BTD PICO、AMI常态化数据标注项目（长期日常）</strong>
+                    <p style="margin-top: 4px;">概况：针对3D点云数据、文本实体词、动捕、内容理解等数据采集、打标、转写；</p>
+                </div>
+                <p style="margin-top: 8px; font-weight: 600; color: #1f2937;">职责和行动：</p>
+                <ul>
+                    <li>项目管理：从数据需求到交付的全流程管理，包含方案设计，UI页面搭建等；</li>
+                    <li>团队管理：基于模板大型项目团队，带领内部QA以及外部资源，高质量完成任务；</li>
+                    <li>数据运营：基于看板、统计等方式，协助模型分析数据供给收敛；</li>
+                    <li>作业提效：通过PE、优化流程、优化模板等维度对项目进行提效，综合降本；</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 工业能源项目 -->
+        <div class="experience-item">
+            <!-- 新增：标题+时间容器（主标题无时间，保持原有样式） -->
+            <div class="exp-title">工业能源项目</div>
+            <div class="exp-desc">
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">SFG中石油安环项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2022.12-2023.05
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：500台边缘分析盒子，20张加速卡，招投标、框架金额1800W；</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">MGV泰州电网传输线数字化巡检项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2020.09-2020.12
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：首个部署机器算法训练一体平台项目Brian++，识别绝缘子、鸟巢、接地线破损场景；</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">MGV长春中车智慧生产项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2020.12-2021.05
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：业务软件设计、MES对接、10W人智慧园区、刷脸支付、生产质检算法应用</p>
+                </div>
+                <p style="margin-top: 8px; font-weight: 600; color: #1f2937;">职责和行动：</p>
+                <ul>
+                    <li>客户沟通：引导客户与公司产品和方案匹配，输出可售清单和相关技术材料；</li>
+                    <li>技术答疑：解答API问题，指导ISV结合公司产品落地客户业务功能；</li>
+                    <li>关键人识别：如信息部门、安全部门、后勤部门解决相关需求顾虑，推动项目进度；</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 智慧城市项目 -->
+        <div class="experience-item">
+            <!-- 新增：标题+时间容器（主标题无时间，保持原有样式） -->
+            <div class="exp-title">智慧城市项目</div>
+            <div class="exp-desc">
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">SFG江西省智慧城市算智中心项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2022.09-2023.02
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：提供60张52.8T算力卡，1套算法算力调度平台，接入48种算法，1.9W路授权；<br>
+                    新闻溯源链接：<a href="https://www.yingcaicheng.com/project/notice/21412" target="_blank" style="color: #2563eb;">https://www.yingcaicheng.com/project/notice/21412</a></p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">MGV沈阳考试院考场端+水地身份双复核项目</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2021.09-2021.02
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：建立全沈阳市70个考场的三千考生身份核验，根据考试要求定制人脸下发和比对流程；<br>
+                    新闻溯源链接：<a href="https://www.sohu.com/a/556783572_394247" target="_blank" style="color: #2563eb;">https://www.sohu.com/a/556783572_394247</a></p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">HIK|盘锦智慧城市网格化项目（规模1.2亿）</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2016.02-2018.02
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">概况：盘锦历史最大规模视频项目，联玖9800路新建视频、存量5k路，23PB存储，1个市区6个分中心分布式部署，涉及产品：云存储、大数据、人脸分析、WIFI探针、行车轨迹等；<br>
+                    新闻溯源链接：<a href="https://www.sohu.com/a/65011800_389742" target="_blank" style="color: #2563eb;">https://www.sohu.com/a/65011800_389742</a></p>
+                </div>
+                <p style="margin-top: 8px; font-weight: 600; color: #1f2937;">职责和行动：</p>
+                <ul>
+                    <li>竞对分析：根据竞品对产品技术，扬长避短，提高项目投标过程中技术得分；</li>
+                    <li>需求响应：分析理解用户场景，匹配公司内产品和可定制功能，设计解决方案；</li>
+                    <li>项目跟进：确保项目顺利交付，从成本、周期、技术以及外部供应商多角度把控；</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 市场活动支持项目 -->
+        <div class="experience-item">
+            <!-- 新增：标题+时间容器（主标题无时间，保持原有样式） -->
+            <div class="exp-title">市场活动支持（角色：主持、参与活动流程设计）</div>
+            <div class="exp-desc">
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">MGV|2021矿视-理光 生态伙伴大会</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2021.03-2021.06
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">规模：200人规模</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <!-- 新增：子项目标题+时间容器 -->
+                    <div class="title-time-wrapper" style="margin-bottom: 4px;">
+                        <strong style="color: #1f2937; font-size: 15px;">HIK|2019东软区域巡回卡车展</strong>
+                        <span class="exp-time">
+                            <i class="far fa-calendar-alt"></i>
+                            2019.02-2019.11
+                        </span>
+                    </div>
+                    <p style="margin-top: 4px;">规模：每场约100人</p>
+                </div>
             </div>
         </div>
     </div>
