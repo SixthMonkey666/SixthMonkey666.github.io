@@ -688,11 +688,25 @@
         </div>
     </div>
 
-    <!-- 新增：微信小程序二维码模块 -->
+   <!-- 微信小程序二维码模块 - 双二维码水平分布 -->
     <div class="mini-program-section">
-        <h3 class="mini-program-title">个人开发的微信小程序，扫码体验</h3>
-        <!-- 替换为你的小程序二维码图片路径 -->
-        <img src="mini-program-qrcode.jpg" class="mini-program-qrcode" alt="微信小程序二维码">
+        <h3 class="mini-program-title">个人开发的微信小程序，欢迎面试官扫码体验</h3>
+        
+        <!-- 二维码容器：水平分布两个二维码 -->
+        <div class="qrcode-container">
+            <!-- 正式版二维码 -->
+            <div class="qrcode-item">
+                <div class="qrcode-label">上线正式版</div>
+                <img src="mini-program-official.jpg" class="mini-program-qrcode" alt="小程序正式版二维码">
+            </div>
+            
+            <!-- 开发体验版二维码 -->
+            <div class="qrcode-item">
+                <div class="qrcode-label">抢先体验版</div>
+                <img src="mini-program-dev.jpg" class="mini-program-qrcode" alt="小程序开发体验版二维码">
+            </div>
+        </div>
     </div>
+    
 </body>
 </html>
