@@ -249,37 +249,59 @@
             margin-bottom: 0;
         }
 
-        /* ========== 修复：小程序样式移到媒体查询外（核心） ========== */
-        /* 小程序板块整体样式 */
+        /* ========== 核心修改：小程序模块样式和卡片样式完全统一 ========== */
+        /* 小程序板块整体样式 - 复用card的核心样式 */
         .mini-program-section {
+            /* 完全复用card的基础样式 */
             background: #ffffff;
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f0f2f5;
+            padding: 35px; /* 和card一致的内边距 */
+            border-radius: 16px; /* 和card一致的圆角 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* 和card一致的阴影 */
+            border: 1px solid #f0f2f5; /* 和card一致的边框 */
+            margin-bottom: 24px; /* 和card一致的底部间距 */
+            /* 移除max-width限制，和card保持相同宽度 */
+            /* 新增hover动效，和card保持一致 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            margin-top: 24px;
-            max-width: 800px; /* 限制最大宽度，避免太宽 */
-            margin-left: auto;
-            margin-right: auto;
         }
+        /* 小程序模块hover动效，和card保持一致 */
+        .mini-program-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        /* 小程序标题样式 - 复用section-title的设计语言 */
         .mini-program-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #1f2937;
+            font-size: 20px; /* 和section-title一致 */
+            font-weight: 600; /* 和section-title一致 */
+            color: #1f2937; /* 和section-title一致 */
             margin-bottom: 30px;
             display: inline-block;
             padding-bottom: 8px;
-            border-bottom: 2px solid #2563eb;
+            border-bottom: 2px solid #2563eb; /* 和section-title一致的下划线 */
+            /* 新增下划线动效，和section-title保持一致 */
+            position: relative;
         }
-        /* 二维码容器 - 强制水平分布 */
+        .mini-program-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.5s ease;
+        }
+        .mini-program-section:hover .mini-program-title::after {
+            width: 100%;
+        }
+        /* 二维码容器 - 强制水平分布，取消max-width限制 */
         .qrcode-container {
             display: grid;
             grid-template-columns: 1fr 1fr; /* 两列等宽 */
             gap: 40px; /* 两列间距 */
             align-items: center; /* 垂直居中 */
             justify-content: center; /* 水平居中 */
-            max-width: 600px; /* 容器最大宽度 */
+            /* 移除max-width，让容器宽度和卡片一致 */
             margin: 0 auto; /* 整体居中 */
         }
         /* 单个二维码项样式 */
@@ -321,7 +343,8 @@
             .contact-info {
                 align-items: center;
             }
-            .card {
+            .card,
+            .mini-program-section { /* 移动端小程序模块和card统一内边距 */
                 padding: 20px;
             }
             .name-info h1 {
@@ -755,7 +778,7 @@
         </div>
     </div>
 
-   <!-- 微信小程序二维码模块 - 双二维码水平分布 -->
+   <!-- 微信小程序二维码模块 - 样式和卡片完全统一 -->
     <div class="mini-program-section">
         <h3 class="mini-program-title">个人开发的微信小程序，欢迎面试官扫码体验</h3>
         
