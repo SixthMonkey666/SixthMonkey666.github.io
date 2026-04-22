@@ -275,6 +275,72 @@
                 align-items: flex-start;
                 gap: 4px;
             }
+            /* 小程序板块整体样式 */
+    .mini-program-section {
+        background: #ffffff;
+        padding: 35px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f0f2f5;
+        text-align: center;
+        margin-top: 24px;
+        max-width: 800px; /* 限制最大宽度，避免太宽 */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .mini-program-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 30px;
+        display: inline-block;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #2563eb;
+    }
+    /* 二维码容器 - 强制水平分布 */
+    .qrcode-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 两列等宽 */
+        gap: 40px; /* 两列间距 */
+        align-items: center; /* 垂直居中 */
+        justify-content: center; /* 水平居中 */
+        max-width: 600px; /* 容器最大宽度 */
+        margin: 0 auto; /* 整体居中 */
+    }
+    /* 单个二维码项样式 */
+    .qrcode-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 文字+图片居中 */
+        gap: 12px;
+    }
+    .qrcode-label {
+        font-size: 16px;
+        font-weight: 500;
+        color: #1f2937;
+        margin-bottom: 8px;
+    }
+    /* 强制统一二维码尺寸（核心修复） */
+    .mini-program-qrcode {
+        width: 200px !important; /* 强制宽度200px */
+        height: 200px !important; /* 强制高度200px */
+        object-fit: contain; /* 保持图片比例，不拉伸 */
+        border: 1px solid #f0f2f5;
+        border-radius: 8px;
+        padding: 8px;
+        background: #f8f9fa;
+    }
+    /* 移动端适配：小屏幕自动改为单列 */
+    @media (max-width: 768px) {
+        .qrcode-container {
+            grid-template-columns: 1fr; /* 单列布局 */
+            gap: 20px;
+        }
+        .mini-program-qrcode {
+            width: 180px !important;
+            height: 180px !important;
+        }
+    }
         }
     </style>
 </head>
