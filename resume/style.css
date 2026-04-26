@@ -1,0 +1,359 @@
+/* 全局样式重置+基础设置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+}
+body {
+    background: #f8f9fa;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #333;
+    line-height: 1.7;
+    /* 页面加载过渡 */
+    opacity: 0;
+    animation: pageFadeIn 0.8s ease-in-out forwards;
+}
+/* 页面加载动效 */
+@keyframes pageFadeIn {
+    to { opacity: 1; }
+}
+/* 卡片样式（商务风） */
+.card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    border: 1px solid #f0f2f5;
+    /* 卡片hover动效 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+/* 双列布局样式 */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+/* 证书+优势 7:3 布局 */
+.seven-three-column {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 30px;
+    align-items: start;
+}
+/* 头部信息布局 */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.photo {
+    width: 180px;
+    height: 240px;
+    object-fit: contain; /* 替换cover：完整显示图片，不裁剪/拉伸 */
+    border-radius: 8px;
+    border: 4px solid #f0f2f5;
+    transition: transform 0.3s ease;
+    image-rendering: -webkit-optimize-contrast; /* 强制提升清晰度（webkit内核） */
+    image-rendering: crisp-edges; /* 禁用模糊缩放 */
+    background: #f8f9fa; /* 图片加载前占位，避免空白 */
+}
+.photo:hover {
+    transform: scale(1.05);
+    /* 放大时添加抗模糊处理 */
+    image-rendering: pixelated;
+}
+
+
+.name-info h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+.job-title {
+    font-size: 16px;
+    color: #2563eb;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+/* 联系方式样式（带图标） */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15px;
+    color: #4b5563;
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* 联系方式hover动效 */
+    transition: color 0.2s ease;
+}
+.contact-item:hover {
+    color: #2563eb;
+}
+.contact-item i {
+    color: #2563eb;
+    width: 18px;
+    text-align: center;
+}
+/* 模块标题样式（带图标） */
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #2563eb;
+    width: fit-content;
+    /* 标题下划线动效 */
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.5s ease;
+}
+.card:hover .section-title::after {
+    width: 100%;
+}
+.section-title i {
+    color: #2563eb;
+    font-size: 18px;
+}
+/* 经历/项目样式 - 核心修改：标题和时间同行 */
+.experience-item {
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 3px solid #e5e7eb;
+    padding-bottom: 10px;
+    /* 经历项hover动效 */
+    transition: border-color 0.3s ease, padding-left 0.3s ease;
+}
+.experience-item:hover {
+    border-color: #2563eb;
+    padding-left: 18px;
+}
+.experience-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+/* 新增：标题+时间容器，实现同行排列 */
+.title-time-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.exp-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1f2937;
+    /* 移除原有的margin-bottom，改为在容器中控制间距 */
+}
+.exp-time {
+    font-size: 14px;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    /* 移除原有的margin-bottom，改为在容器中控制间距 */
+}
+.exp-time i {
+    font-size: 12px;
+    color: #9ca3af;
+}
+.exp-desc {
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.8;
+}
+.exp-desc ul {
+    padding-left: 20px;
+    margin-top: 8px;
+}
+.exp-desc li {
+    margin-bottom: 6px;
+    /* 列表项hover动效 */
+    transition: color 0.2s ease;
+}
+.exp-desc li:hover {
+    color: #2563eb;
+}
+/* 能力标签样式（缩小字号） */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+.skill-tag {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #dbeafe;
+    /* 标签hover动效 */
+    transition: all 0.3s ease;
+    cursor: default;
+}
+.skill-tag:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+/* 教育背景项样式 */
+.edu-item {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+.edu-item:hover {
+    background: #eff6ff;
+}
+.edu-item:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== 核心修改：小程序模块样式和卡片样式完全统一 ========== */
+/* 小程序板块整体样式 - 复用card的核心样式 */
+.mini-program-section {
+    /* 完全复用card的基础样式 */
+    background: #ffffff;
+    padding: 35px; /* 和card一致的内边距 */
+    border-radius: 16px; /* 和card一致的圆角 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* 和card一致的阴影 */
+    border: 1px solid #f0f2f5; /* 和card一致的边框 */
+    margin-bottom: 24px; /* 和card一致的底部间距 */
+    /* 移除max-width限制，和card保持相同宽度 */
+    /* 新增hover动效，和card保持一致 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+/* 小程序模块hover动效，和card保持一致 */
+.mini-program-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+/* 小程序标题样式 - 复用section-title的设计语言 */
+.mini-program-title {
+    font-size: 20px; /* 和section-title一致 */
+    font-weight: 600; /* 和section-title一致 */
+    color: #1f2937; /* 和section-title一致 */
+    margin-bottom: 30px;
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #2563eb; /* 和section-title一致的下划线 */
+    /* 新增下划线动效，和section-title保持一致 */
+    position: relative;
+}
+.mini-program-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.5s ease;
+}
+.mini-program-section:hover .mini-program-title::after {
+    width: 100%;
+}
+/* 二维码容器 - 强制水平分布，取消max-width限制 */
+.qrcode-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 两列等宽 */
+    gap: 40px; /* 两列间距 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    /* 移除max-width，让容器宽度和卡片一致 */
+    margin: 0 auto; /* 整体居中 */
+}
+/* 单个二维码项样式 */
+.qrcode-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 文字+图片居中 */
+    gap: 12px;
+}
+.qrcode-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+/* 强制统一二维码尺寸（核心修复） */
+.mini-program-qrcode {
+    width: 200px !important; /* 强制宽度200px */
+    height: 200px !important; /* 强制高度200px */
+    object-fit: contain; /* 保持图片比例，不拉伸 */
+    border: 1px solid #f0f2f5;
+    border-radius: 8px;
+    padding: 8px;
+    background: #f8f9fa;
+}
+
+/* 响应式适配（手机端） */
+@media (max-width: 768px) {
+    .two-column,
+    .seven-three-column {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .contact-info {
+        align-items: center;
+    }
+    .card,
+    .mini-program-section { /* 移动端小程序模块和card统一内边距 */
+        padding: 20px;
+    }
+    .name-info h1 {
+        font-size: 26px;
+    }
+    /* 移动端标题+时间换行显示，保证可读性 */
+    .title-time-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    /* 小程序移动端适配：单列布局 */
+    .qrcode-container {
+        grid-template-columns: 1fr; /* 单列布局 */
+        gap: 20px;
+    }
+    .mini-program-qrcode {
+        width: 180px !important;
+        height: 180px !important;
+    }
+}
